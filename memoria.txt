@@ -1,0 +1,46 @@
+Sara Peral Aragoneses
+Examen PSI 
+
+1. Crear proyeto:
+  $ django-admin.py startproject proyecto
+
+  Crear aplicacion:
+  $ python manage.py startapp aplicacion
+
+  Base de datos:
+    $ dropdb -U alumnodb -h localhost examen
+    $ createdb -U alumnodb -h localhost examen
+
+
+2. Creamos los modelos de datos en el fichero models.py.
+
+    Creamos 3 modelos:
+      - Pizza: con un CharField que indica el nombr de la pizza
+      - Ingrediente: un charField que indica el nombre del infrediente
+      - Contiene: dos claves foraneas a la pizza y al ingrediente, y un float que indica el porcentaje.
+
+    Registramos los modelos creados en admin.py:
+      - admin.site.register(pizza)
+	admin.site.register(ingrediente)
+	admin.site.register(contiene)
+
+A continuación, realizamos las migraciones: 
+
+$ python3 manage.py makemigrations
+$ python3 manage.py migrate
+
+Y por último creamos al super usuario para poder comprobar el correcto funvinamiento.
+$ python3 manage.py createsuperuser
+Con usuario alumnodb y contraseña alumnodb
+
+3. Script pobar.py que inserta datos en la base de datos.
+	Para ello creamos el fichero poblar.py en la ruta del proyecto 
+	Para crear los objectos de los modelos utilizamos: 
+		<model>.object.create() con los correspondientes campos.
+
+
+4. Para comprobar que los modelos son correctos y que el fichero poblar.py pobla la base de datos
+podemos acceder a nuestro proyecto con "/admin" y observamos que los modelos son correctos y los datos
+insertados también. 
+
+5. No he subido capaz de subirlo a Heroku.
